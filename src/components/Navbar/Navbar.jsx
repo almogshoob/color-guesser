@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <a href="/">
+        <a href="/color-guesser">
           <h1>Color Guesser</h1>
         </a>
         <button className="icon-button" onClick={toggleTheme}>
