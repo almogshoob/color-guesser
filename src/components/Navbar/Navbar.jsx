@@ -40,7 +40,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <h1>Color Guesser</h1>
+        <a href="/">
+          <h1>Color Guesser</h1>
+        </a>
         <button className="icon-button" onClick={toggleTheme}>
           {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
         </button>
