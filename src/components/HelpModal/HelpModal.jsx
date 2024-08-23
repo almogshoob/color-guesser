@@ -1,4 +1,4 @@
-import { HintIcon1 } from "../../assets/icons";
+import { HintIcon } from "../../assets/icons";
 import { Modal } from "../../templates";
 
 const HelpModal = ({ open, onClose }) => {
@@ -23,7 +23,7 @@ const HelpModal = ({ open, onClose }) => {
           the closeness of your guess. Use these to gauge your next guess!
         </p>
         <div className="hint">
-          <HintIcon1 />
+          <HintIcon />
           <p>
             <b>Hint: </b> In this game the h,s,l values are always multiple of
             10

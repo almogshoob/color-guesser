@@ -34,6 +34,10 @@ svg {
   max-width: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 :root {
   font-family: Arial, sans-serif;
   font-synthesis: none;
@@ -101,7 +105,6 @@ h2 {
 button.icon-button {
   font-size: 1.75rem;
   color: var(--txt-color);
-  cursor: pointer;
   background-color: transparent;
   border: none;
   border-radius: 50%;

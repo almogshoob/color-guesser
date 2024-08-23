@@ -67,7 +67,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         <input
           autoFocus={true}
           ref={inputRef}
-          type="tel" // TODO text or tel?
+          type="tel"
           maxLength={11}
           className="color-input"
           readOnly={guesses.length === 5 || guesses[0] === todayColor}

@@ -12,91 +12,6 @@
   }
 }
 
-.content {
-  max-width: 600px;
-  min-width: 350px;
-  margin-inline: auto;
-  padding-inline: 2rem;
-}
-
-.paper {
-  background-color: var(--bg-contrast);
-  border-radius: 16px;
-  border: solid 1px var(--border-color);
-  padding: 1.5rem 2rem;
-  margin-block: 1rem;
-}
-
-.colors {
-  gap: 2rem;
-  align-self: stretch;
-}
-
-.color-box {
-  align-self: stretch;
-  aspect-ratio: 1;
-  border-radius: 10px;
-}
-
-.color-input {
-  border: solid 1px var(--border-color);
-  outline-color: var(--border-color);
-  margin-top: 1.2rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  width: 12ch;
-  text-align: center;
-
-  &::placeholder {
-    opacity: 0.5;
-  }
-}
-
-.helper {
-  font-size: 0.9rem;
-  margin-top: 10px;
-  color: var(--txt-secondary);
-}
-
-.guesses {
-  &:not(:has(.guess-item)) {
-    display: none;
-  }
-}
-
-.guesses-list {
-  gap: 0.5rem;
-  align-self: stretch;
-}
-
-.guess-item {
-  gap: 0.5rem;
-  align-self: stretch;
-}
-
-.guess-field {
-  font-size: 1.25rem;
-  padding: 0.5em 1em;
-  border: solid 1px var(--border-color);
-  border-radius: 5px;
-  text-align: center;
-}
-
-.color-progress {
-  height: 20px;
-  align-self: stretch;
-  margin-bottom: 1rem;
-}
-
-.hsl-helper {
-  align-self: stretch;
-  text-align: center;
-  color: var(--txt-secondary);
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-
 .help-modal {
   --modal-padding: 2rem;
   padding: var(--modal-padding);
@@ -148,3 +63,106 @@
     margin-bottom: 0;
   }
 }
+
+.content {
+  max-width: 600px;
+  min-width: 350px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.paper {
+  background-color: var(--bg-contrast);
+  border-radius: 16px;
+  border: solid 1px var(--border-color);
+  padding: 1.5rem 2rem;
+  margin-block: 1rem;
+}
+
+.colors {
+  gap: 2rem;
+  align-self: stretch;
+}
+
+.color-box {
+  align-self: stretch;
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
+
+.color-input {
+  border: solid 1px var(--border-color);
+  outline-color: var(--border-color);
+  margin-top: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 12ch;
+  text-align: center;
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+}
+
+.helper {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: var(--txt-secondary);
+}
+
+.guesses {
+  position: relative;
+  &:not(:has(.guess-item)) {
+    display: none;
+  }
+}
+
+.color-progress {
+  height: 20px;
+  align-self: stretch;
+  margin-bottom: 1rem;
+}
+
+.hsl-helper {
+  align-self: stretch;
+  text-align: center;
+  color: var(--txt-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.guesses-list {
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.guess-item {
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.guess-field {
+  font-size: 1.25rem;
+  padding: 0.5em 1em;
+  border: solid 1px var(--border-color);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.share-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.1em;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: solid 1px var(--border-color);
+  background-color: light-dark(hsl(140 70 90), hsl(140 30 20));
+  
+  &:is(:hover, :active) {
+    background-color: light-dark(hsl(140 70 85), hsl(140 30 25));
+  }
+}
+
+/* TODO container width mobile smaller gap and padding */
