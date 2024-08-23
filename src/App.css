@@ -1,0 +1,149 @@
+.nav {
+  display: flex;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-contrast);
+  border-bottom: solid 1px var(--border-color);
+
+  & > :first-child {
+    margin-right: auto;
+  }
+}
+
+.content {
+  max-width: 600px;
+  min-width: 350px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.paper {
+  background-color: var(--bg-contrast);
+  border-radius: 16px;
+  border: solid 1px var(--border-color);
+  padding: 1.5rem 2rem;
+  margin-block: 1rem;
+}
+
+.colors {
+  gap: 2rem;
+  align-self: stretch;
+}
+
+.color-box {
+  align-self: stretch;
+  aspect-ratio: 1;
+  border-radius: 10px;
+}
+
+.color-input {
+  border: solid 1px var(--border-color);
+  outline-color: var(--border-color);
+  margin-top: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 12ch;
+  text-align: center;
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+}
+
+.helper {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: var(--txt-secondary);
+}
+
+.guesses {
+  &:not(:has(.guess-item)) {
+    display: none;
+  }
+}
+
+.guesses-list {
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.guess-item {
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.guess-field {
+  font-size: 1.25rem;
+  padding: 0.5em 1em;
+  border: solid 1px var(--border-color);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.color-progress {
+  height: 20px;
+  align-self: stretch;
+  margin-bottom: 1rem;
+}
+
+.hsl-helper {
+  align-self: stretch;
+  text-align: center;
+  color: var(--txt-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.help-modal {
+  --modal-padding: 2rem;
+  padding: var(--modal-padding);
+  border-radius: 8px;
+  background-color: var(--bg-contrast);
+  border: solid 1px var(--txt-color);
+  max-width: 50ch;
+
+  & > h2 {
+    margin-bottom: 1rem;
+  }
+  & > p {
+    font-size: 15px;
+    line-height: 1.5em;
+    opacity: 0.9;
+    margin-bottom: 0.75rem;
+    & > b {
+      font-weight: bold;
+    }
+  }
+  & > .hint {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    position: relative;
+    isolation: isolate;
+    & > svg {
+      font-size: 2rem;
+      color: var(--txt-color);
+      margin-right: 10px;
+    }
+    &::before {
+      content: "" "";
+      position: absolute;
+      top: 0;
+      left: calc(-1 * var(--modal-padding));
+      width: calc(100% + 2 * var(--modal-padding));
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        hsl(60, 100%, 50%, 0.1),
+        hsl(60, 100%, 50%, 0.3),
+        hsl(60, 100%, 50%, 0.1)
+      );
+      z-index: -1;
+    }
+  }
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
