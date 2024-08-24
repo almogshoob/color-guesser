@@ -4,6 +4,7 @@
   padding: 16px;
   position: sticky;
   top: 0;
+  z-index: 1;
   background-color: var(--bg-contrast);
   border-bottom: solid 1px var(--border-color);
 

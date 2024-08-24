@@ -20,6 +20,16 @@ const Navbar = () => {
     });
   };
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (
+      window.location.pathname !== "/color-guesser/" ||
+      window.location.search
+    )
+      window.location.href = "/color-guesser/";
+    else window.location.reload();
+  };
+
   // init theme
   useEffect(() => {
     if (
@@ -40,8 +50,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        {/* TODO replace if same url */}
-        <a href="/color-guesser">
+        <a href="/color-guesser" onClick={handleLogoClick}>
           <h1>Color Guesser</h1>
         </a>
         <button className="icon-button" onClick={toggleTheme}>
