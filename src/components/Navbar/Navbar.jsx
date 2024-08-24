@@ -40,6 +40,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
+        {/* TODO replace if same url */}
         <a href="/color-guesser">
           <h1>Color Guesser</h1>
         </a>

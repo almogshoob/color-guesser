@@ -79,6 +79,10 @@
   margin-block: 1rem;
 }
 
+.console {
+  position: relative;
+}
+
 .colors {
   gap: 2rem;
   align-self: stretch;
@@ -111,8 +115,22 @@
   color: var(--txt-secondary);
 }
 
+.share-button {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.1em;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: solid 1px var(--border-color);
+  background-color: light-dark(hsl(140 70 90), hsl(140 30 20));
+
+  &:is(:hover, :active) {
+    background-color: light-dark(hsl(140 70 85), hsl(140 30 25));
+  }
+}
+
 .guesses {
-  position: relative;
   &:not(:has(.guess-item)) {
     display: none;
   }
@@ -150,19 +168,14 @@
   text-align: center;
 }
 
-.share-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.1em;
-  font-size: 1.5rem;
-  border-radius: 4px;
-  border: solid 1px var(--border-color);
-  background-color: light-dark(hsl(140 70 90), hsl(140 30 20));
-  
-  &:is(:hover, :active) {
-    background-color: light-dark(hsl(140 70 85), hsl(140 30 25));
+@media (width < 500px) {
+  .content {
+    padding-inline: 1rem;
+  }
+  .paper {
+    padding: 0.75rem 1rem;
+  }
+  .colors {
+    gap: 1rem;
   }
 }
-
-/* TODO container width mobile smaller gap and padding */

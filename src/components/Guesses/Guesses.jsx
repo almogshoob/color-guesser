@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { getShareText, getSymbol } from "../../utils/utils";
-import { ShareIcon } from "../../assets/icons";
+import { getSymbol } from "../../utils/utils";
 
 const gradientStops = {
   // 2: ["0 40%", "60% 100%"],
@@ -26,10 +25,6 @@ const Guesses = ({ todayColor, guesses }) => {
       : `hsl(${guesses[0]}`;
   }, [guesses.length]);
 
-  const handleShare = () => {
-    navigator.clipboard.writeText(getShareText(guesses));
-  };
-
   return (
     <div className="guesses | paper column">
       <h2>Guesses</h2>
@@ -54,11 +49,6 @@ const Guesses = ({ todayColor, guesses }) => {
           </div>
         ))}
       </div>
-      {guesses[0] === todayColor && (
-        <button className="share-button" onClick={handleShare}>
-          <ShareIcon />
-        </button>
-      )}
     </div>
   );
 };

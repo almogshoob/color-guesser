@@ -38,11 +38,11 @@ export const getShareText = (guessesList) => {
   const targetValues = target.split(" ");
   const colorEncoding = btoa(`${targetValues.map(value => value.padStart(3, "0")).join("")}`);
   return `
-  I guessed this HSL in ${guessesList.length}!
-  
-  ${guesses.map(guess => guess.split(" ").map((value, i) => getSymbol(parseInt(value), parseInt(targetValues[i]))).join("")).join("\n")}
-  ✅✅✅
-  
-  https://almogshoob.github.io/color-guesser/?color=${colorEncoding}
-  `
+I guessed this HSL in ${guessesList.length}!
+
+${guesses.reverse().map(guess => guess.split(" ").map((value, i) => getSymbol(parseInt(value), parseInt(targetValues[i]))).join("")).join("\n")}
+✅✅✅
+
+https://almogshoob.github.io/color-guesser/?color=${colorEncoding}
+`
 }

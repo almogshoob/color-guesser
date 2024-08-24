@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { ShareIcon } from "../../assets/icons";
+import { getShareText } from "../../utils/utils";
 
 const helperTexts = {
   0: "Start by typing your guess above!",
@@ -41,8 +43,12 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     }
   };
 
+  const handleShare = () => {
+    navigator.clipboard.writeText(getShareText(guesses));
+  };
+
   return (
-    <div className="paper column">
+    <div className="console | paper column">
       <div className="colors | row">
         <div className="column">
           <h2>Target</h2>
@@ -75,6 +81,11 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         />
       </form>
       <p className="helper">{helperText}</p>
+      {guesses[0] === todayColor && (
+        <button className="share-button" onClick={handleShare}>
+          <ShareIcon />
+        </button>
+      )}
     </div>
   );
 };
