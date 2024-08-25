@@ -1,3 +1,5 @@
+import { GRADIENT_STOPS } from "../constants/constants";
+
 const getRand = (max) => Math.floor(Math.random() * (max + 1));
 
 export const getRandomHsl = () => `${getRand(36) * 10} ${(getRand(9) + 1) * 10} ${(getRand(8) + 1) * 10}`;
@@ -22,6 +24,16 @@ export const getSymbol = (guess, target) => {
   else if (guess > target) return (guess - target > 20) ? "⏬" : "🔽";
   else return (target - guess > 20) ? "⏫" : "🔼";
 }
+
+export const getLinearGradient = (guesses) => {
+  return guesses.length > 1
+    ? `linear-gradient(to left, ${guesses
+      .map(
+        (guess, i) => `hsl(${guess}) ${GRADIENT_STOPS[guesses.length][i]}`
+      )
+      .join()})`
+    : `hsl(${guesses[0]}`;
+};
 
 export const parseSharedColor = (sharedParam) => {
   try {
