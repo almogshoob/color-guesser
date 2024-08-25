@@ -66,7 +66,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
       </div>
       <form
         onSubmit={handleSumbit}
-        onFocus={() => buttonRef.current.setAttribute("visible", "true")}
+        onFocus={() => buttonRef.current?.setAttribute("visible", "true")}
+        onBlur={() => buttonRef.current?.removeAttribute("visible")}
       >
         <input
           ref={inputRef}
