@@ -5,6 +5,7 @@ import { getShareText } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
   const inputRef = useRef();
+  const buttonRef = useRef();
   const [helperText, setHelperText] = useState(HELPER_TEXTS.GUESS0);
 
   const handleSumbit = (event) => {
@@ -26,7 +27,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
       if (isLastTry && !isCorrect) setHelperText(HELPER_TEXTS.FAILURE);
       setGuesses((prev) => [input, ...prev]);
     }
-  };  
+  };
 
   const handleSwitchKeyboard = (e) => {
     e.preventDefault();
@@ -63,7 +64,10 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           />
         </div>
       </div>
-      <form onSubmit={handleSumbit}>
+      <form
+        onSubmit={handleSumbit}
+        onFocus={() => buttonRef.current.setAttribute("visible", "true")}
+      >
         <input
           ref={inputRef}
           autoFocus={true}
@@ -75,6 +79,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           className="color-input"
         />
         <button
+          ref={buttonRef}
           type="button"
           className="switch-keyboard"
           onClick={handleSwitchKeyboard}
