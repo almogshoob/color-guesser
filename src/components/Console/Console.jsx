@@ -23,7 +23,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     if (guesses.includes(input))
       setHelperText("You already guesses it, try something else");
     else if (input.split(" ").length !== 3)
-      setHelperText("Error: enter 3 number separated with spaces");
+      setHelperText("Not in format: enter 3 numbers separated with spaces");
     else if (
       !input.match(
         /^(360|3[0-5][0-9]|[12]?[0-9]?[0-9]) ([0-9]|[1-9][0-9]|100) ([0-9]|[1-9][0-9]|100)$/
@@ -73,7 +73,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         <input
           autoFocus={true}
           ref={inputRef}
-          type="tel"
+          type="text"
+          inputMode="numeric"
           maxLength={11}
           className="color-input"
           readOnly={guesses.length === 5 || guesses[0] === todayColor}
