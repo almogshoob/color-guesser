@@ -74,7 +74,6 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           autoFocus={true}
           ref={inputRef}
           type="text"
-          inputMode="numeric"
           maxLength={11}
           className="color-input"
           readOnly={guesses.length === 5 || guesses[0] === todayColor}
