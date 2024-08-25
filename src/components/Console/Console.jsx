@@ -8,6 +8,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
   const buttonRef = useRef();
   const [helperText, setHelperText] = useState(HELPER_TEXTS.GUESS0);
 
+  const isMobile = navigator.maxTouchPoints > 0;
+
   const handleSumbit = (event) => {
     event.preventDefault();
     if (guesses.length === 5 || guesses[0] === todayColor) return;
@@ -29,8 +31,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     }
   };
 
-  const handleSwitchKeyboard = (e) => {
-    e.preventDefault();
+  const handleSwitchKeyboard = () => {
     const newValue =
       inputRef.current.inputMode === "numeric" ? "text" : "numeric";
     inputRef.current.inputMode = newValue;
@@ -67,11 +68,15 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
       <form
         onSubmit={handleSumbit}
         onFocus={() => buttonRef.current?.setAttribute("visible", "true")}
-        onBlur={() => buttonRef.current?.removeAttribute("visible")}
+        onBlur={(e) => {
+          if (e.relatedTarget?.tagName !== "BUTTON") {
+            buttonRef.current.removeAttribute("visible");
+          }
+        }}
       >
         <input
           ref={inputRef}
-          autoFocus={true}
+          autoFocus={!isMobile}
           type="text"
           inputMode={localStorage.getItem("keyboard") || "numeric"}
           maxLength={11}
@@ -79,14 +84,16 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           readOnly={guesses.length === 5 || guesses[0] === todayColor}
           className="color-input"
         />
-        <button
-          ref={buttonRef}
-          type="button"
-          className="switch-keyboard"
-          onClick={handleSwitchKeyboard}
-        >
-          <KeyboardIcon />
-        </button>
+        {isMobile && (
+          <button
+            ref={buttonRef}
+            type="button"
+            className="switch-keyboard"
+            onClick={handleSwitchKeyboard}
+          >
+            <KeyboardIcon />
+          </button>
+        )}
       </form>
       <p className="helper">{helperText}</p>
       {guesses[0] === todayColor && (

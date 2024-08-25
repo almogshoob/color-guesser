@@ -120,6 +120,10 @@
   &:focus-visible {
     outline: none;
   }
+
+  &[visible] {
+    display: block;
+  }
 }
 
 .color-input {
@@ -204,11 +208,5 @@
   }
   .colors {
     gap: 1rem;
-  }
-}
-
-@media (pointer: coarse) {
-  .switch-keyboard[visible] {
-    display: block;
   }
 }
