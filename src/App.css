@@ -104,6 +104,7 @@
   display: none;
   position: absolute;
   right: 0;
+  bottom: 0;
   translate: calc(100% + 0.5rem);
   height: 100%;
   padding: 0.1em;

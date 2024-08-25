@@ -26,11 +26,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
       if (isLastTry && !isCorrect) setHelperText(HELPER_TEXTS.FAILURE);
       setGuesses((prev) => [input, ...prev]);
     }
-  };
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(getShareText(guesses));
-  };
+  };  
 
   const handleSwitchKeyboard = (e) => {
     e.preventDefault();
@@ -39,6 +35,10 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     inputRef.current.inputMode = newValue;
     localStorage.setItem("keyboard", newValue);
     inputRef.current.focus();
+  };
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(getShareText(guesses));
   };
 
   return (
@@ -74,7 +74,11 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           readOnly={guesses.length === 5 || guesses[0] === todayColor}
           className="color-input"
         />
-        <button className="switch-keyboard" onClick={handleSwitchKeyboard}>
+        <button
+          type="button"
+          className="switch-keyboard"
+          onClick={handleSwitchKeyboard}
+        >
           <KeyboardIcon />
         </button>
       </form>
