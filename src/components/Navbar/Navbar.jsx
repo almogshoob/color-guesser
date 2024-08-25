@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <a href="/color-guesser" onClick={handleLogoClick}>
+        <a href="/color-guesser" onClick={handleLogoClick} tabIndex={-1}>
           <h1>Color Guesser</h1>
         </a>
         <button className="icon-button" onClick={toggleTheme}>

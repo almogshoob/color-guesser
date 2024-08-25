@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ShareIcon } from "../../assets/icons";
+import { KeyboardIcon, ShareIcon } from "../../assets/icons";
 import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
 import { getShareText } from "../../utils/utils";
 
@@ -32,6 +32,15 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     navigator.clipboard.writeText(getShareText(guesses));
   };
 
+  const handleSwitchKeyboard = (e) => {
+    e.preventDefault();
+    const newValue =
+      inputRef.current.inputMode === "numeric" ? "text" : "numeric";
+    inputRef.current.inputMode = newValue;
+    localStorage.setItem("keyboard", newValue);
+    inputRef.current.focus();
+  };
+
   return (
     <div className="console | paper column">
       <div className="colors | row">
@@ -59,11 +68,15 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           ref={inputRef}
           autoFocus={true}
           type="text"
+          inputMode={localStorage.getItem("keyboard") || "numeric"}
           maxLength={11}
           placeholder="H S L"
           readOnly={guesses.length === 5 || guesses[0] === todayColor}
           className="color-input"
         />
+        <button className="switch-keyboard" onClick={handleSwitchKeyboard}>
+          <KeyboardIcon />
+        </button>
       </form>
       <p className="helper">{helperText}</p>
       {guesses[0] === todayColor && (

@@ -95,10 +95,35 @@
   border-radius: 10px;
 }
 
+.console form {
+  position: relative;
+  margin-top: 1.2rem;
+}
+
+.switch-keyboard {
+  display: none;
+  position: absolute;
+  right: 0;
+  translate: calc(100% + 0.5rem);
+  height: 100%;
+  padding: 0.1em;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  border: solid 1px var(--border-color);
+  background-color: var(--bg-color);
+
+  &:is(:hover, :active, :focus-visible) {
+    background-color: var(--hover-color);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
 .color-input {
   border: solid 1px var(--border-color);
   outline-color: var(--border-color);
-  margin-top: 1.2rem;
   padding: 0.25rem 0.5rem;
   font-size: 1.5rem;
   border-radius: 5px;
@@ -178,5 +203,11 @@
   }
   .colors {
     gap: 1rem;
+  }
+}
+
+@media (pointer: coarse) and (hover: none) {
+  .switch-keyboard {
+    display: block;
   }
 }
