@@ -17,10 +17,6 @@
   font: inherit;
 }
 
-* {
-  transition: background-color 200ms;
-}
-
 /* input, textarea, button, select {
   font: inherit;
 } */
@@ -41,6 +37,7 @@ svg {
 
 button {
   cursor: pointer;
+  transition: background-color 200ms;
 }
 
 a {

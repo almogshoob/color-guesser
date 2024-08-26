@@ -23,14 +23,15 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     else if (input.split(" ").length !== 3) setHelperText(ERRORS.WRONG_FORMAT);
     else if (!input.match(HSL_REGEX)) setHelperText(ERRORS.OUT_OF_RANGE);
     else {
-      const isLastTry = guesses.length === 4;
       const isCorrect = input === todayColor;
-      setHelperText(
-        isCorrect
-          ? HELPER_TEXTS.SUCCESS
-          : HELPER_TEXTS[`GUESS${guesses.length + 1}`]
-      );
-      if (isLastTry && !isCorrect) setHelperText(HELPER_TEXTS.FAILURE);
+      const isLastTry = guesses.length === 4;
+      if (isCorrect) {
+        setHelperText(HELPER_TEXTS.SUCCESS);
+        event.target.children[0].blur();
+      } else if (isLastTry) {
+        setHelperText(HELPER_TEXTS.FAILURE);
+        event.target.children[0].blur();
+      } else setHelperText(HELPER_TEXTS[`GUESS${guesses.length + 1}`]);
       setGuesses((prev) => [input, ...prev]);
     }
   };
@@ -73,9 +74,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         onSubmit={handleSumbit}
         onFocus={() => buttonRef.current?.setAttribute("visible", "true")}
         onBlur={(e) => {
-          if (e.relatedTarget?.tagName !== "BUTTON") {
-            buttonRef.current.removeAttribute("visible");
-          }
+          if (e.relatedTarget?.tagName !== "BUTTON")
+            buttonRef.current?.removeAttribute("visible");
         }}
       >
         <input
