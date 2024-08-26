@@ -138,6 +138,10 @@
   &::placeholder {
     opacity: 0.5;
   }
+
+  &:disabled {
+    color: inherit;
+  }
 }
 
 .helper {

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { KeyboardIcon, ShareIcon } from "../../assets/icons";
 import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
 import { getShareText } from "../../utils/utils";
@@ -9,10 +9,14 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
   const [helperText, setHelperText] = useState(HELPER_TEXTS.GUESS0);
 
   const isMobile = navigator.maxTouchPoints > 0;
+  const isFinished = useMemo(
+    () => guesses.length === 5 || guesses[0] === todayColor,
+    [guesses]
+  );
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    if (guesses.length === 5 || guesses[0] === todayColor) return;
+    if (isFinished) return;
 
     const input = inputRef.current.value.trim();
     if (guesses.includes(input)) setHelperText(ERRORS.ALREADY_GUESSED);
@@ -81,7 +85,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           inputMode={localStorage.getItem("keyboard") || "numeric"}
           maxLength={11}
           placeholder="H S L"
-          readOnly={guesses.length === 5 || guesses[0] === todayColor}
+          disabled={isFinished}
           className="color-input"
         />
         {isMobile && (

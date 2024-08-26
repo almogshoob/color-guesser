@@ -17,6 +17,10 @@
   font: inherit;
 }
 
+* {
+  transition: background-color 200ms;
+}
+
 /* input, textarea, button, select {
   font: inherit;
 } */
@@ -94,10 +98,6 @@ h2 {
   font-family: "Chakra Petch", sans-serif;
   font-weight: 500;
   margin-bottom: 0.5rem;
-}
-
-button {
-  transition: background-color 200ms;
 }
 
 .row {
