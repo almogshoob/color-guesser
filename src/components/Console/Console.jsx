@@ -74,7 +74,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         onSubmit={handleSumbit}
         onFocus={() => buttonRef.current?.setAttribute("visible", "true")}
         onBlur={(e) => {
-          if (e.relatedTarget?.tagName !== "BUTTON")
+          if (e.relatedTarget?.id !== "switch-keyboard-button")
             buttonRef.current?.removeAttribute("visible");
         }}
       >
@@ -92,6 +92,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           <button
             ref={buttonRef}
             type="button"
+            id="switch-keyboard-button"
             className="switch-keyboard"
             onClick={handleSwitchKeyboard}
           >
