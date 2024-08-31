@@ -70,14 +70,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           />
         </div>
       </div>
-      <form
-        onSubmit={handleSumbit}
-        onFocus={() => buttonRef.current?.setAttribute("visible", "true")}
-        onBlur={(e) => {
-          if (e.relatedTarget?.id !== "switch-keyboard-button")
-            buttonRef.current?.removeAttribute("visible");
-        }}
-      >
+      <form onSubmit={handleSumbit} className="input-form">
         <input
           ref={inputRef}
           autoFocus={!isMobile}

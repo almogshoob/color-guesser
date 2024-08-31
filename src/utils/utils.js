@@ -2,7 +2,7 @@ import { GRADIENT_STOPS } from "../constants/constants";
 
 const getRand = (max) => Math.floor(Math.random() * (max + 1));
 
-export const getRandomHsl = () => `${getRand(36) * 10} ${(getRand(9) + 1) * 10} ${(getRand(8) + 1) * 10}`;
+export const getRandomHsl = () => `${getRand(35) * 10} ${(getRand(9) + 1) * 10} ${(getRand(8) + 1) * 10}`;
 
 // const getLevelList = () => {
 //   const hslSet = new Set();
