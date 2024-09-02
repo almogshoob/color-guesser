@@ -23,7 +23,9 @@ function App() {
           setGuesses={setGuesses}
           todayColor={todayColor}
         />
-        <Guesses guesses={guesses} todayColor={todayColor} />
+        {guesses.length !== 0 && (
+          <Guesses guesses={guesses} todayColor={todayColor} />
+        )}
       </main>
     </>
   );

@@ -83,6 +83,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         />
         {isMobile && (
           <button
+            tabIndex={-1} // safari sucks
             ref={buttonRef}
             type="button"
             id="switch-keyboard-button"

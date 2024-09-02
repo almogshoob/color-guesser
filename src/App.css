@@ -142,6 +142,11 @@
   &:disabled {
     color: inherit;
   }
+
+  &:focus-visible {
+    outline-style: auto;
+    outline-width: 1px;
+  }
 }
 
 .helper {
@@ -162,12 +167,6 @@
 
   &:is(:hover, :active) {
     background-color: light-dark(hsl(140 70 85), hsl(140 30 25));
-  }
-}
-
-.guesses {
-  &:not(:has(.guess-item)) {
-    display: none;
   }
 }
 

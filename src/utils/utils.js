@@ -32,7 +32,7 @@ export const getLinearGradient = (guesses) => {
         (guess, i) => `hsl(${guess}) ${GRADIENT_STOPS[guesses.length][i]}`
       )
       .join()})`
-    : `hsl(${guesses[0]}`;
+    : `hsl(${guesses[0]})`;
 };
 
 export const parseSharedColor = (sharedParam) => {
