@@ -11,7 +11,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     localStorage.getItem("keyboard") || "numeric"
   );
 
-  const isMobile = useMemo(navigator.maxTouchPoints > 0, []);
+  const isMobile = useMemo(() => navigator.maxTouchPoints > 0, []);
   const isFinished = useMemo(
     () => guesses.length === 5 || guesses[0] === todayColor,
     [guesses]
