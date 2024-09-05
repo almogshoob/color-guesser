@@ -11,7 +11,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     localStorage.getItem("keyboard") || "numeric"
   );
 
-  const isMobile = navigator.maxTouchPoints > 0;
+  const isMobile = useMemo(navigator.maxTouchPoints > 0, []);
   const isFinished = useMemo(
     () => guesses.length === 5 || guesses[0] === todayColor,
     [guesses]
@@ -40,10 +40,10 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
   };
 
   const handleSwitchKeyboard = () => {
+    inputRef.current.autoFocus = true;
     const newValue = inputmode === "numeric" ? "text" : "numeric";
-    setInputmode(newValue);
     localStorage.setItem("keyboard", newValue);
-    setTimeout(inputRef.current.focus, 1000);
+    setInputmode(newValue);
   };
 
   const handleShare = () => {
@@ -79,7 +79,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           autoFocus={!isMobile}
           type="text"
           inputMode={inputmode}
-          key={inputmode} // safari sucks
+          key={inputmode} // safari sucks if not key need to inputRef.current.focus()
           maxLength={11}
           placeholder="H S L"
           disabled={isFinished}
