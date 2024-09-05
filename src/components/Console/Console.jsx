@@ -4,17 +4,18 @@ import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
 import { getShareText } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
-  const inputRef = useRef();
-  const buttonRef = useRef();
-  const [helperText, setHelperText] = useState(HELPER_TEXTS.GUESS0);
-  const [inputmode, setInputmode] = useState(
-    localStorage.getItem("keyboard") || "numeric"
-  );
-
   const isMobile = useMemo(() => navigator.maxTouchPoints > 0, []);
   const isFinished = useMemo(
     () => guesses.length === 5 || guesses[0] === todayColor,
     [guesses]
+  );
+
+  const inputRef = useRef();
+  const buttonRef = useRef();
+  const [helperText, setHelperText] = useState(HELPER_TEXTS.GUESS0);
+  const [autoFocus, setAutoFocus] = useState(!isMobile);
+  const [inputmode, setInputmode] = useState(
+    localStorage.getItem("keyboard") || "numeric"
   );
 
   const handleSumbit = (event) => {
@@ -40,9 +41,9 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
   };
 
   const handleSwitchKeyboard = () => {
-    inputRef.current.autoFocus = true;
     const newValue = inputmode === "numeric" ? "text" : "numeric";
     localStorage.setItem("keyboard", newValue);
+    setAutoFocus(true);
     setInputmode(newValue);
   };
 
@@ -76,7 +77,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
       <form onSubmit={handleSumbit} className="input-form">
         <input
           ref={inputRef}
-          autoFocus={!isMobile}
+          autoFocus={autoFocus}
           type="text"
           inputMode={inputmode}
           key={inputmode} // safari sucks if not key need to inputRef.current.focus()
