@@ -43,7 +43,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     const newValue = inputmode === "numeric" ? "text" : "numeric";
     setInputmode(newValue);
     localStorage.setItem("keyboard", newValue);
-    inputRef.current.focus();
+    setTimeout(inputRef.current.focus, 0);
   };
 
   const handleShare = () => {
@@ -85,7 +85,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           disabled={isFinished}
           className="color-input"
         />
-        {isMobile && (
+        {/* {isMobile && ( */}
+        {true && (
           <button
             tabIndex={-1} // safari sucks
             ref={buttonRef}
