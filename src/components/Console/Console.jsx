@@ -43,7 +43,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
     const newValue = inputmode === "numeric" ? "text" : "numeric";
     setInputmode(newValue);
     localStorage.setItem("keyboard", newValue);
-    setTimeout(inputRef.current.focus, 0);
+    setTimeout(inputRef.current.focus, 100);
   };
 
   const handleShare = () => {
