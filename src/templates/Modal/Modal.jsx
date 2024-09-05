@@ -15,7 +15,7 @@ export function Modal({ open, onClose, className, children }) {
 
   return (
     <dialog
-      className={`TModal ${className}`}
+      className={`TModal ${className || ""}`}
       ref={ref}
       onCancel={onClose}
       onClick={handleBackdropClick}
