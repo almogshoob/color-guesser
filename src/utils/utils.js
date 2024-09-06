@@ -58,3 +58,14 @@ ${guesses.reverse().map(guess => guess.split(" ").map((value, i) => getSymbol(pa
 https://almogshoob.github.io/color-guesser/?color=${colorEncoding}
 `
 }
+
+export const hsl2safari = (h, s, l, model = "rgb") => {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return model === "rgb" ? 255 * color : Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return model === "rgb" ? `rgb(${f(0)},${f(8)},${f(4)})` : `#${f(0)}${f(8)}${f(4)}`;
+}

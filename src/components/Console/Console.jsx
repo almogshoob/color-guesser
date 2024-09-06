@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { KeyboardIcon, ShareIcon } from "../../assets/icons";
 import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
-import { getShareText } from "../../utils/utils";
+import { getShareText, hsl2safari } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
   const isMobile = useMemo(() => navigator.maxTouchPoints > 0, []);
@@ -57,9 +57,14 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
         <div className="column">
           <h2>Target</h2>
           <div
-            key={todayColor} // safari sucks
             className="color-box"
-            style={{ backgroundColor: `hsl(${todayColor})` }}
+            style={{
+              // safari sucks
+              backgroundColor: hsl2safari(
+                ...todayColor.split(" ").map((n) => parseInt(n))
+              ),
+              // backgroundColor: `hsl(${todayColor})`
+            }}
           />
         </div>
         <div className="column">
