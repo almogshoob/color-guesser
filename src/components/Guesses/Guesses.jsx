@@ -1,8 +1,12 @@
 import { useMemo } from "react";
-import { getLinearGradient, getSymbol } from "../../utils/utils";
+import {
+  getLinearGradient,
+  getSymbol,
+  hslString2Array,
+} from "../../utils/utils";
 
 const Guesses = ({ todayColor, guesses }) => {
-  const todayColorValues = todayColor.split(" ").map((n) => parseInt(n));
+  const todayColorValues = hslString2Array(todayColor);
 
   const colorProgressGradient = useMemo(
     () => getLinearGradient(guesses),

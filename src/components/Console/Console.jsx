@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { KeyboardIcon, ShareIcon } from "../../assets/icons";
 import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
-import { getShareText, hsl2safari } from "../../utils/utils";
+import { getShareText, hsl2safari, hslString2Array } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
   const isMobile = useMemo(() => navigator.maxTouchPoints > 0, []);
@@ -60,10 +60,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
             className="color-box"
             style={{
               // safari sucks
-              backgroundColor: hsl2safari(
-                ...todayColor.split(" ").map((n) => parseInt(n))
-              ),
               // backgroundColor: `hsl(${todayColor})`
+              backgroundColor: hsl2safari(...hslString2Array(todayColor)),
             }}
           />
         </div>
@@ -73,7 +71,9 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
             className="color-box"
             style={{
               backgroundColor: guesses.length
-                ? `hsl(${guesses[0]})`
+                ? // safari sucks
+                  // `hsl(${guesses[0]})`
+                  hsl2safari(...hslString2Array(guesses[0]))
                 : "var(--bg-color)",
             }}
           />

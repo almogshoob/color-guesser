@@ -25,16 +25,6 @@ export const getSymbol = (guess, target) => {
   else return (target - guess > 20) ? "⏫" : "🔼";
 }
 
-export const getLinearGradient = (guesses) => {
-  return guesses.length > 1
-    ? `linear-gradient(to left, ${guesses
-      .map(
-        (guess, i) => `hsl(${guess}) ${GRADIENT_STOPS[guesses.length][i]}`
-      )
-      .join()})`
-    : `hsl(${guesses[0]})`;
-};
-
 export const parseSharedColor = (sharedParam) => {
   try {
     return atob(sharedParam)
@@ -69,3 +59,17 @@ export const hsl2safari = (h, s, l, model = "rgb") => {
   };
   return model === "rgb" ? `rgb(${f(0)},${f(8)},${f(4)})` : `#${f(0)}${f(8)}${f(4)}`;
 }
+
+export const hslString2Array = (hslString) => hslString.split(" ").map((n) => parseInt(n))
+
+export const getLinearGradient = (guesses) => {
+  return guesses.length > 1
+    ? `linear-gradient(to left, ${guesses
+      .map(
+        // safari sucks
+        // (guess, i) => `hsl(${guess}) ${GRADIENT_STOPS[guesses.length][i]}`
+        (guess, i) => `${hsl2safari(...hslString2Array(guess))} ${GRADIENT_STOPS[guesses.length][i]}`
+      )
+      .join()})`
+    : `hsl(${guesses[0]})`;
+};
