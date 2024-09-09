@@ -19,7 +19,7 @@
   border-radius: 8px;
   background-color: var(--bg-contrast);
   border: solid 1px var(--txt-color);
-  max-width: 50ch;
+  max-width: 55ch;
 
   & > h2 {
     margin-bottom: 1rem;
@@ -62,6 +62,29 @@
   }
   & > :last-child {
     margin-bottom: 0;
+  }
+}
+
+.hue-scale-helper {
+  margin-bottom: 0.75rem;
+  & > p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  & > .color-scale {
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(
+      to right,
+      hsl(0, 100%, 50%),
+      hsl(60, 100%, 50%),
+      hsl(120, 100%, 50%),
+      hsl(180, 100%, 50%),
+      hsl(240, 100%, 50%),
+      hsl(300, 100%, 50%),
+      hsl(360, 100%, 50%)
+    );
   }
 }
 

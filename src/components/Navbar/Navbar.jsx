@@ -10,7 +10,10 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(
     userThemePreference ? userThemePreference === "dark" : isDevicePreferDark
   );
-  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
+
+  const isNewPlayer = !localStorage.getItem("user");
+  if (isNewPlayer) localStorage.setItem("user", "active");
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(isNewPlayer);
 
   const toggleTheme = () => {
     setIsDarkMode((prev) => {

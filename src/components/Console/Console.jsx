@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { KeyboardIcon, ShareIcon } from "../../assets/icons";
-import { ERRORS, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
+import { ERRORS, FORMAT_REGEX, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
 import { getShareText, hsl2safari, hslString2Array } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
@@ -24,7 +24,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
 
     const input = inputRef.current.value.trim();
     if (guesses.includes(input)) setHelperText(ERRORS.ALREADY_GUESSED);
-    else if (input.split(" ").length !== 3) setHelperText(ERRORS.WRONG_FORMAT);
+    else if (!input.match(FORMAT_REGEX)) setHelperText(ERRORS.WRONG_FORMAT);
     else if (!input.match(HSL_REGEX)) setHelperText(ERRORS.OUT_OF_RANGE);
     else {
       const isCorrect = input === todayColor;

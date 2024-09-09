@@ -10,27 +10,30 @@ const HelpModal = ({ open, onClose }) => {
           HSL is an intuitive color model based on Hue, Saturation and
           Lightness.
         </p>
+        <p>Your guess should include 3 numbers separated with spaces:</p>
         <p>
-          Hue is measured in degrees on a color wheel, from red (0°) to green
-          (120°) to blue (240°) back to red (360°). Saturation and Lightness are
-          measured in percentages and indicate color intensity and brightness
-          respectively.
+          Hue - basic color in degrees from 0 to 360 <br />
+          Saturation - color intensity in percentages from 0 to 100 <br />
+          Lightness - color brightness in percentages from 0 to 100 <br />
         </p>
+        <div className="hue-scale-helper">
+          <p>
+            <span>0°</span>
+            <span>120°</span>
+            <span>240°</span>
+            <span>360°</span>
+          </p>
+          <div className="color-scale"></div>
+        </div>
         <p>
           You will have 5 tries to correctly guess the hsl code of the target
-          color. After each guess, your last guess will be displayed in the
-          guess box.
-        </p>
-        <p>
-          There will be symbols that pop up in the guesses section that indicate
-          the closeness of your guess. Use these to gauge your next guess!
+          color. After each guess, there will be symbols that pop up in the
+          guesses section that indicate the closeness of your guess. Use these
+          to gauge your next guess!
         </p>
         <div className="hint">
           <HintIcon />
-          <p>
-            <b>Hint: </b> In this game the h,s,l values are always multiple of
-            10
-          </p>
+          <p>In this game the h,s,l values are always multiple of 10</p>
         </div>
       </div>
     </Modal>

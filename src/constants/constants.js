@@ -15,6 +15,8 @@ export const ERRORS = {
     "Out of range: hue (0-360) saturation (0-100) luminance (0-100)",
 };
 
+export const FORMAT_REGEX = /^(\d)+ (\d)+ (\d)+$/
+
 export const HSL_REGEX =
   /^([12]?[0-9]?[0-9]|3[0-5][0-9]|360) ([0-9]|[1-9][0-9]|100) ([0-9]|[1-9][0-9]|100)$/;
 
