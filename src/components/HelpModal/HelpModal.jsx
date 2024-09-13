@@ -10,7 +10,10 @@ const HelpModal = ({ open, onClose }) => {
           HSL is an intuitive color model based on Hue, Saturation and
           Lightness.
         </p>
-        <p>Your guess should include 3 numbers separated with spaces:</p>
+        <p>
+          You will have 5 tries to correctly guess the HSL code of a target
+          color. A guess consists of 3 numbers separated with spaces:
+        </p>
         <p>
           Hue - basic color in degrees from 0 to 360 <br />
           Saturation - color intensity in percentages from 0 to 100 <br />
@@ -26,10 +29,8 @@ const HelpModal = ({ open, onClose }) => {
           <div className="color-scale"></div>
         </div>
         <p>
-          You will have 5 tries to correctly guess the hsl code of the target
-          color. After each guess, there will be symbols that pop up in the
-          guesses section that indicate the closeness of your guess. Use these
-          to gauge your next guess!
+          For each guess, there will be symbols that indicate the closeness of
+          your guess. Use these to gauge your next guess!
         </p>
         <div className="hint">
           <HintIcon />
