@@ -175,6 +175,13 @@
   }
 }
 
+.hidden-safari-submit {
+  position: absolute;
+  z-index: -1;
+  border-color: transparent;
+  background-color: transparent;
+}
+
 .helper {
   font-size: 0.9rem;
   margin-top: 10px;

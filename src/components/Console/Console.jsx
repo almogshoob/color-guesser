@@ -1,6 +1,11 @@
 import { useMemo, useRef, useState } from "react";
 import { KeyboardIcon, ShareIcon } from "../../assets/icons";
-import { ERRORS, FORMAT_REGEX, HELPER_TEXTS, HSL_REGEX } from "../../constants/constants";
+import {
+  ERRORS,
+  FORMAT_REGEX,
+  HELPER_TEXTS,
+  HSL_REGEX,
+} from "../../constants/constants";
 import { getShareText, hsl2safari, hslString2Array } from "../../utils/utils";
 
 const Console = ({ todayColor, guesses, setGuesses }) => {
@@ -104,6 +109,8 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
             <KeyboardIcon />
           </button>
         )}
+        {/* safari sucks */}
+        <input type="submit" className="hidden-safari-submit" value="" />
       </form>
       <p className="helper">{helperText}</p>
       {guesses[0] === todayColor && (
