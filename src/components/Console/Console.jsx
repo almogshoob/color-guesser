@@ -96,8 +96,7 @@ const Console = ({ todayColor, guesses, setGuesses }) => {
           disabled={isFinished}
           className="color-input"
         />
-        {/* {isMobile && ( */}
-        {true && (
+        {isMobile && (
           <button
             tabIndex={-1} // safari sucks
             ref={buttonRef}
